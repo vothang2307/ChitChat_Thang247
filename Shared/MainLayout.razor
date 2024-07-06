@@ -1,0 +1,59 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>ChiChat</PageTitle>
+
+<div class="page">
+    <div class="sidebar" style="background-color:palevioletred; width: 120px">
+        <NavMenu />
+    </div>
+
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <button @onclick="Logout" class="btn btn-link">Logout</button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+@code {
+    [Inject]
+    private NavigationManager Navigation { get; set; }
+
+    [Inject]
+    private SignInManager<IdentityUser> SignInManager { get; set; }
+
+    [Inject]
+    private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+
+    private async Task Logout()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user.Identity.IsAuthenticated)
+            {
+                await SignInManager.SignOutAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception as needed
+            Console.WriteLine(ex);
+        }
+        finally
+        {
+            // Navigate to login page after signing out
+            Navigation.NavigateTo("/Identity/Account/Login", true);
+        }
+    }
+}
+
+
+
+

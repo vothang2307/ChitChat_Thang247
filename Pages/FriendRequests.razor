@@ -1,0 +1,42 @@
+﻿@page "/friendrequests"
+@using ChiChat.Services
+@inject FriendService FriendService
+@inject UserManager<IdentityUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Friend Requests</h3>
+
+<ul>
+    @foreach (var request in friendRequests)
+    {
+        <li>
+            <span>@request.Sender.Email</span>
+            <button @onclick="() => AcceptRequest(request.Id)">Accept</button>
+            <button @onclick="() => DeclineRequest(request.Id)">Decline</button>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<FriendRequest> friendRequests = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = UserManager.GetUserId(user);
+        friendRequests = await FriendService.GetFriendRequestsAsync(userId);
+    }
+
+    private async Task AcceptRequest(int requestId)
+    {
+        await FriendService.AcceptFriendRequestAsync(requestId);
+        friendRequests = await FriendService.GetFriendRequestsAsync(UserManager.GetUserId((await AuthenticationStateProvider.GetAuthenticationStateAsync()).User));
+    }
+
+    private async Task DeclineRequest(int requestId)
+    {
+        await FriendService.DeclineFriendRequestAsync(requestId);
+        friendRequests = await FriendService.GetFriendRequestsAsync(UserManager.GetUserId((await AuthenticationStateProvider.GetAuthenticationStateAsync()).User));
+    }
+}

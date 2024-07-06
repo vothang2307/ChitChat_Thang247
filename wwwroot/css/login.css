@@ -1,0 +1,96 @@
+﻿body {
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+    .login-container h3 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+.form-group {
+    position: relative;
+}
+
+    .form-group label {
+        position: absolute;
+        top: -20px;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 0 5px;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #e91e63;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+    .btn-primary:hover {
+        background-color: #d81b60;
+    }
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+    .social-login a {
+        width: 48%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+    }
+
+    .social-login .facebook {
+        background-color: #3b5998;
+    }
+
+    .social-login .twitter {
+        background-color: #1da1f2;
+    }
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .remember-me label {
+        margin: 0;
+    }
+
+    .remember-me a {
+        font-size: 14px;
+        text-decoration: none;
+        color: #e91e63;
+    }

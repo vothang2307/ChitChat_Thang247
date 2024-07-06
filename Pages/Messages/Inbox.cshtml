@@ -1,0 +1,25 @@
+﻿@page
+@model ChiChat.Pages.Messages.InboxModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>Inbox</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Người gửi</th>
+            <th>Nội dung</th>
+            <th>Thời gian gửi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model.Messages)
+        {
+            <tr>
+                <td>@message.SenderId</td>
+                <td>@message.Content</td>
+                <td>@message.SentAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

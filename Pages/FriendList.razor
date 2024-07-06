@@ -1,0 +1,33 @@
+﻿@page "/friends"
+@using ChiChat.Services;
+@inject NavigationManager Navigation
+@inject UserManager<IdentityUser> UserManager
+@inject FriendService FriendService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Danh sách bạn bè</h3>
+<ul>
+    @foreach (var friend in friends)
+    {
+        <li>
+            <a @onclick="@(() => StartChat(friend.FriendId))">@friend.FriendEmail</a>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<Friendship> friends = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = UserManager.GetUserId(user);
+        friends = await FriendService.GetFriendsAsync(userId);
+    }
+
+    private void StartChat(string friendId)
+    {
+        Navigation.NavigateTo($"/chat/{friendId}");
+    }
+}

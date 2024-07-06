@@ -1,0 +1,153 @@
+﻿@page "/Todo"
+@using ChiChat.Models
+
+<h3 class="todo-header">To-Do List 📝</h3>
+
+<div class="todo-container">
+    <div class="input-group">
+        <input class="form-control todo-input" @bind="newTodo" placeholder="Add your text" />
+        <button class="btn btn-add" @onclick="AddTodo">Add</button>
+    </div>
+
+    <ul class="todo-list">
+        @foreach (var item in todos)
+        {
+            <li class="todo-item" style="@GetItemStyle(item)">
+                <div class="todo-content">
+                    <span class="todo-title">@item.Title</span>
+                </div>
+                <button class="btn btn-remove" @onclick="() => RemoveTodoItem(item)">×</button>
+            </li>
+        }
+    </ul>
+</div>
+
+<style>
+    .todo-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .todo-container {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .todo-input {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .btn-add {
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        flex: 0 0 auto; /* Ensures button doesn't stretch */
+    }
+
+        .btn-add:hover {
+            background-color: #e64a19;
+        }
+
+    .todo-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+    }
+
+    .todo-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .todo-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .todo-title {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .btn-remove {
+        background-color: transparent;
+        border: none;
+        color: #ff5722;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+        .btn-remove:hover {
+            color: #e64a19;
+        }
+</style>
+
+@code {
+    private Todo? selectedTodo;
+    private string newTodo;
+    private List<Todo> todos = new List<Todo>
+    {
+        new Todo { Title = "Làm bài tập Blazor", IsDone = false },
+        new Todo { Title = "Đi đánh bóng", IsDone = false },
+        new Todo { Title = "Ăn cơm", IsDone = false },
+        new Todo { Title = "Ôn thi kết thúc học phần", IsDone = false }
+    };
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new Todo { Title = newTodo, IsDone = false });
+            newTodo = string.Empty;
+        }
+    }
+
+    private void RemoveTodoItem(Todo item)
+    {
+        todos.Remove(item);
+        if (selectedTodo == item)
+        {
+            selectedTodo = null;
+        }
+    }
+
+    private void SelectTodoItem(Todo item)
+    {
+        selectedTodo = item;
+    }
+
+    private bool CanRemoveTodo => selectedTodo != null;
+
+    private string GetItemStyle(Todo item)
+    {
+        return selectedTodo == item ? "background-color: lightgray;" : "";
+    }
+
+    public class Todo
+    {
+        public string Title { get; set; }
+        public bool IsDone { get; set; }
+    }
+}

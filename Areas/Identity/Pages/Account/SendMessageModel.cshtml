@@ -1,0 +1,25 @@
+﻿@page
+@model ChiChat.Areas.Identity.Pages.Account.SendMessageModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>Gửi tin nhắn</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <h4>Gửi tin nhắn tới người dùng khác.</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Input.Email" class="control-label"></label>
+                <input type="email" id="recipientEmail" class="form-control" asp-for="Input.Email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Content" class="control-label"></label>
+                <textarea id="messageContent" class="form-control" asp-for="Input.Content" rows="4"></textarea>
+                <span asp-validation-for="Input.Content" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+        </form>
+    </div>
+</div>

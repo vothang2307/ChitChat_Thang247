@@ -1,0 +1,121 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ChiChat
+build_property.RootNamespace = ChiChat
+build_property.ProjectDir = D:\Tin học Kinh tế 2021-2025\Lập trình web\ChiChat\ChiChat\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Tin học Kinh tế 2021-2025\Lập trình web\ChiChat\ChiChat
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Addfriend.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkZnJpZW5kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Chat.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/FriendList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJpZW5kTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/FriendRequests.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJpZW5kUmVxdWVzdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/LoggedInUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nZ2VkSW5Vc2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-873n2b5ix6
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-5c9lbdwfdi
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/Account/SendMessageModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxTZW5kTWVzc2FnZU1vZGVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/_IdentityLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX0lkZW50aXR5TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Messages/Inbox.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVzc2FnZXNcSW5ib3guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/Messages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVzc2FnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tin học Kinh tế 2021-2025/Lập trình web/ChiChat/ChiChat/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

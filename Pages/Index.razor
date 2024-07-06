@@ -1,0 +1,109 @@
+﻿@page "/"
+@using ChiChat.Services
+@inject NavigationManager Navigation
+@inject UserManager<IdentityUser> UserManager
+@inject FriendService FriendService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h1 class="greeting">Xin chào, @userEmail!</h1>
+<p class="welcome-message">Chào mừng bạn trở lại với ChiChat. Chúc bạn có một ngày tuyệt vời!</p>
+
+<div class="friend-list">
+    @foreach (var friend in friends)
+    {
+        <div class="friend-item" @onclick="@(() => StartChat(friend.FriendId))">
+            <div class="friend-info">
+                <div class="friend-name">
+                    @friend.FriendEmail
+                    @if (friend.HasUnreadMessages)
+                    {
+                        <span class="unread-dot"></span>
+                    }
+                </div>
+                <div class="last-message">Last message at @DateTime.Now.ToShortTimeString()</div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .greeting {
+        color: #4CAF50;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .welcome-message {
+        color: #555;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .friend-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .friend-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #e0e0e0;
+        cursor: pointer;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s;
+    }
+
+        .friend-item:hover {
+            background-color: #f1f1f1;
+        }
+
+    .friend-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .friend-name {
+        font-weight: bold;
+        position: relative;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .unread-dot {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: -2px;
+        right: -10px;
+    }
+
+    .last-message {
+        font-size: 0.9em;
+        color: #888;
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+
+@code {
+    private string userEmail;
+    private List<Friendship> friends = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        userEmail = user.Identity.Name;
+
+        var userId = UserManager.GetUserId(user);
+        friends = await FriendService.GetFriendsWithUnreadStatusAsync(userId);
+    }
+
+    private void StartChat(string friendId)
+    {
+        Navigation.NavigateTo($"/chat/{friendId}");
+    }
+}

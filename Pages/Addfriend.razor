@@ -1,0 +1,110 @@
+﻿@page "/addfriend"
+@using ChiChat.Services
+@inject FriendService FriendService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject UserManager<IdentityUser> UserManager
+
+<h3>Tìm kiếm bạn bè</h3>
+
+<div class="search-container">
+    <input type="text" @bind="searchTerm" placeholder="Nhập email hoặc tên bạn bè" />
+    <button @onclick="SearchFriends">Tìm kiếm</button>
+</div>
+
+<div class="results-container">
+    @if (searchResults != null)
+    {
+        @foreach (var user in searchResults)
+        {
+            <div class="friend-item">
+                <span>@user.Email</span>
+                <button @onclick="() => AddFriend(user.Id)">Thêm bạn bè</button>
+            </div>
+        }
+    }
+</div>
+
+@if (friendRequestsSent)
+{
+    <div class="notification">
+        <p>Đã thêm người này vào khung chat!</p>
+    </div>
+}
+
+<style>
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .search-container input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .results-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .friend-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+        .friend-item button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .notification {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+    }
+</style>
+
+@code {
+    private string searchTerm;
+    private List<IdentityUser> searchResults;
+    private bool friendRequestsSent;
+
+    private async Task SearchFriends()
+    {
+        searchResults = await FriendService.SearchUsersAsync(searchTerm);
+        friendRequestsSent = false; // Reset notification
+    }
+
+    private async Task AddFriend(string friendId)
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = UserManager.GetUserId(user);
+
+        await FriendService.AddFriendAsync(userId, friendId);
+        friendRequestsSent = true; // Show notification
+    }
+}

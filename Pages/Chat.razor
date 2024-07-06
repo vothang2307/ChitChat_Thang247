@@ -1,0 +1,130 @@
+﻿@page "/chat/{friendId}"
+@using ChiChat.Services;
+@inject UserManager<IdentityUser> UserManager
+@inject MessageService MessageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Trò chuyện với @friendEmail</h3>
+
+<div class="chat-container">
+    @foreach (var message in messages)
+    {
+        <div class="message @(message.SenderId == userId ? "message-sent" : "message-received")">
+            <div class="message-content">
+                <span>@message.Content</span>
+            </div>
+            <div class="message-timestamp">@message.SentAt.ToLocalTime().ToString("HH:mm")</div>
+        </div>
+    }
+</div>
+
+<div class="input-container">
+    <input type="text" @bind="newMessage" placeholder="Nhập tin nhắn..." />
+    <button @onclick="SendMessage">Gửi</button>
+</div>
+
+@code {
+    [Parameter] public string FriendId { get; set; }
+
+    private string friendEmail;
+    private List<Message> messages = new();
+    private string newMessage;
+    private string userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        userId = UserManager.GetUserId(user);
+
+        messages = await MessageService.GetMessagesAsync(userId, FriendId);
+        var friend = await UserManager.FindByIdAsync(FriendId);
+        friendEmail = friend?.Email ?? "Không rõ";
+
+        await MarkMessagesAsRead();
+    }
+
+    private async Task SendMessage()
+    {
+        if (!string.IsNullOrEmpty(newMessage))
+        {
+            await MessageService.SendMessageAsync(userId, FriendId, newMessage);
+            newMessage = string.Empty;
+            messages = await MessageService.GetMessagesAsync(userId, FriendId);
+        }
+    }
+    private async Task MarkMessagesAsRead()
+    {
+        await MessageService.MarkMessagesAsRead(userId, FriendId);
+        messages = await MessageService.GetMessagesAsync(userId, FriendId);
+    }
+}
+
+<style>
+    .chat-container {
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .message {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .message-sent {
+        align-items: flex-end;
+    }
+
+    .message-received {
+        align-items: flex-start;
+    }
+
+    .message-content {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #dcf8c6;
+    }
+
+    .message-sent .message-content {
+        background-color: #dcf8c6;
+    }
+
+    .message-received .message-content {
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
+
+    .message-timestamp {
+        font-size: 0.8em;
+        color: #999;
+        margin-top: 5px;
+    }
+
+    .input-container {
+        display: flex;
+        padding: 10px;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+    }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+</style>
